@@ -1,14 +1,16 @@
-# Think Market — interactive demo
+# Think Market Bids
 
-A self-contained, in-browser demo of the Think Market sealed-bid liquidation
-platform. Two sides, switchable from the header:
+The Think Market sealed-bid platform, built from the Showroom in the ThinkTLS
+repository (`demos/src/variants/showroom`). The backend is the
+`showroom-ai-proxy` Cloudflare Worker (D1 + KV); email goes out through Resend.
 
-- **Bidder** — browse the listings, make private per-line offers, review and send.
-- **Admin** — price the listings, invite buyers, close the round, settle ties,
-  approve the results emails, and look at price trends across rounds.
+- `/` — the admin console, behind sign-in. Start a round, upload the bid
+  sheet, set reserves, open bidding with **Give the link**, lock, compute and
+  approve the results letters.
+- `?join=<round>` — the bidder sign-up page. A bidder signs in with their
+  name, the one-time access code the seller gave them, and their email.
+- `?bid=<token>` — one bidder's private bidding sheet.
 
-Everything runs locally in your browser on synthetic seed data. No account, no
-server, no database, and no email is ever sent — the companies, contacts and
-addresses are invented and every address ends in `.test`.
-
-Built from the Showroom variant of the platform's demo suite.
+This folder is generated: rebuild it with
+`npx vite-node demos/scripts/build-share.mjs` from the ThinkTLS repo root and
+publish the contents of `demos/share/`.
